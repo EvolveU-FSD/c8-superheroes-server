@@ -47,7 +47,13 @@ const verifyPassword = async (password, hashedPassword) => {
   return passwordsMatch;
 };
 
+// please never call this in production!
+const deleteAllUsers = async () => {
+  await User.deleteMany({})
+}
+
 module.exports = {
+  deleteAllUsers,
   createUser,
   getUserByUsername,
   getUserById,
